@@ -48,7 +48,7 @@ fn hash(input: &str) -> [bool; 128] {
             u8::try_from(chunk.iter().copied().reduce(|acc, el| acc ^ el).unwrap()).unwrap();
 
         for j in 0..8 {
-            if chunk & 0b1000_0000 >> j == 0b1000_0000 >> j {
+            if chunk & 0x80 >> j == 0x80 >> j {
                 hash[i * 8 + j] = true;
             }
         }
